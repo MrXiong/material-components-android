@@ -57,12 +57,13 @@ install:
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'build-tools;26.0.2' > /dev/null
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'platforms;android-P' > /dev/null
   - echo y | $HOME/android-sdk/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
+  - export PATH=$HOME/android-sdk/platform-tools:$PATH
 
 before_script:
   - ./travis_before_script.sh
 
 script:
-  - ./gradlew assemble -PdisablePreDex;
+  - ./gradlew assemble --no-daemon -PdisablePreDex
   - ./travis_run_unit_tests.sh
   - travis_wait ./travis_set_up_emulator.sh
   - travis_wait ./travis_run_instrumentation_tests.sh
