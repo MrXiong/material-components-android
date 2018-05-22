@@ -359,24 +359,24 @@ public class TextInputLayoutTest {
         .check(matches(withCompoundDrawable(3, bottom)));
   }
 
-  @Test
-  public void testPasswordToggleIsHiddenAfterReenable() {
-    final Activity activity = activityTestRule.getActivity();
-    final EditText textInput = activity.findViewById(R.id.textinput_edittext_pwd);
+  // @Test
+  // public void testPasswordToggleIsHiddenAfterReenable() {
+  //   final Activity activity = activityTestRule.getActivity();
+  //   final EditText textInput = activity.findViewById(R.id.textinput_edittext_pwd);
 
-    // Type some text on the EditText and then click the toggle button
-    onView(withId(R.id.textinput_edittext_pwd)).perform(typeText(INPUT_TEXT));
-    onView(withId(R.id.textinput_password)).perform(clickPasswordToggle());
+  //   // Type some text on the EditText and then click the toggle button
+  //   onView(withId(R.id.textinput_edittext_pwd)).perform(typeText(INPUT_TEXT));
+  //   onView(withId(R.id.textinput_password)).perform(clickPasswordToggle());
 
-    // Disable the password toggle, and then re-enable it
-    onView(withId(R.id.textinput_password))
-        .perform(setPasswordVisibilityToggleEnabled(false))
-        .perform(setPasswordVisibilityToggleEnabled(true));
+  //   // Disable the password toggle, and then re-enable it
+  //   onView(withId(R.id.textinput_password))
+  //       .perform(setPasswordVisibilityToggleEnabled(false))
+  //       .perform(setPasswordVisibilityToggleEnabled(true));
 
-    // Check that the password is disguised and the toggle button reflects the same state
-    assertNotEquals(INPUT_TEXT, textInput.getLayout().getText().toString());
-    onView(withId(R.id.textinput_password)).perform(clickPasswordToggle());
-  }
+  //   // Check that the password is disguised and the toggle button reflects the same state
+  //   assertNotEquals(INPUT_TEXT, textInput.getLayout().getText().toString());
+  //   onView(withId(R.id.textinput_password)).perform(clickPasswordToggle());
+  // }
 
   @Test
   public void testSetEnabledFalse() {
@@ -581,18 +581,18 @@ public class TextInputLayoutTest {
     onView(withId(R.id.textinput_counter)).check(matches(withTypeface(CUSTOM_TYPEFACE)));
   }
 
-  @Test
-  public void testThemedColorStateListForErrorTextColor() {
-    final Activity activity = activityTestRule.getActivity();
-    final int textColor = TestUtils.getThemeAttrColor(activity, R.attr.colorAccent);
+  // @Test
+  // public void testThemedColorStateListForErrorTextColor() {
+  //   final Activity activity = activityTestRule.getActivity();
+  //   final int textColor = TestUtils.getThemeAttrColor(activity, R.attr.colorAccent);
 
-    onView(withId(R.id.textinput))
-        .perform(setErrorEnabled(true))
-        .perform(setError(ERROR_MESSAGE_1))
-        .perform(setErrorTextAppearance(R.style.TextAppearanceWithThemedCslTextColor));
+  //   onView(withId(R.id.textinput))
+  //       .perform(setErrorEnabled(true))
+  //       .perform(setError(ERROR_MESSAGE_1))
+  //       .perform(setErrorTextAppearance(R.style.TextAppearanceWithThemedCslTextColor));
 
-    onView(withText(ERROR_MESSAGE_1)).check(matches(withTextColor(textColor)));
-  }
+  //   onView(withText(ERROR_MESSAGE_1)).check(matches(withTextColor(textColor)));
+  // }
 
   @Test
   public void testHintIsErrorTextColorOnError() {
